@@ -1,0 +1,159 @@
+﻿@model PlayasLimpiasWebApp.Models.Event
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="display-1" style="color: black;">Edit</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" required />
+                <span asp-validation-for="Name" class="text-danger"></span>
+                <div class="invalid-feedback">
+                    <strong>A name for the event is required.</strong>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" required />
+                <span asp-validation-for="Date" class="text-danger"></span>
+                <div class="invalid-feedback">
+                    <strong>A date for the event is required.</strong>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumVolunteersReq" class="control-label"></label>
+                <input asp-for="NumVolunteersReq" class="form-control" min="0" required />
+                <span asp-validation-for="NumVolunteersReq" class="text-danger"></span>
+                <div class="invalid-feedback">
+                    <strong>Please choose an estimated number of volunteers required for the event.</strong>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Add Volunteers</label>
+                <input asp-for="NumVolunteers" class="form-control" value="0" min="0" />
+                <span asp-validation-for="NumVolunteers" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Location" class="control-label"></label>
+                <select asp-for="Location" class="form-select" aria-label="Default select example" required>
+                    <option value="Colombo, Western Province">Colombo, Western Province</option>
+                    <option value="Kandy, Central Province">Kandy, Central Province</option>
+                    <option value="Galle, Southern Province">Galle, Southern Province</option>
+                    <option value="Jaffna, Northern Province">Jaffna, Northern Province</option>
+                    <option value="Trincomalee, Eastern Province">Trincomalee, Eastern Province</option>
+                    <option value="Matara, Southern Province">Matara, Southern Province</option>
+                    <option value="Anuradhapura, North Central Province">Anuradhapura, North Central Province</option>
+                    <option value="Negombo, Western Province">Negombo, Western Province</option>
+                    <option value="Batticaloa, Eastern Province">Batticaloa, Eastern Province</option>
+                    <option value="Kurunegala, North Western Province">Kurunegala, North Western Province</option>
+                    <option value="Badulla, Uva Province">Badulla, Uva Province</option>
+                    <option value="Ratnapura, Sabaragamuwa Province">Ratnapura, Sabaragamuwa Province</option>
+                    <option value="Matale, Central Province">Matale, Central Province</option>
+                    <option value="Kalutara, Western Province">Kalutara, Western Province</option>
+                    <option value="Gampaha, Western Province">Gampaha, Western Province</option>
+                    <option value="Puttalam, North Western Province">Puttalam, North Western Province</option>
+                    <option value="Polonnaruwa, North Central Province">Polonnaruwa, North Central Province</option>
+                    <option value="Kegalle, Sabaragamuwa Province">Kegalle, Sabaragamuwa Province</option>
+                    <option value="Mannar, Northern Province">Mannar, Northern Province</option>
+                    <option value="Hambantota, Southern Province">Hambantota, Southern Province</option>
+                    <option value="Nuwareliya, Central Province">Nuwareliya, Central Province</option>
+                    <option value="Mullaitivu, Northern Province">Mullaitivu, Northern Province</option>
+                    <option value="Vavuniya, Northern Province">Vavuniya, Northern Province</option>
+                    <option value="Ampara, Eastern Province">Ampara, Eastern Province</option>
+                    <option value="Monaragala, Uva Province">Monaragala, Uva Province</option>
+                    <option value="Batticaloa, Eastern Province">Batticaloa, Eastern Province</option>
+                    <option value="Kilinochchi, Northern Province">Kilinochchi, Northern Province</option>
+                    <option value="Mannar, Northern Province">Mannar, Northern Province</option>
+                    <option value="Matale, Central Province">Matale, Central Province</option>
+                    <option value="Matara, Southern Province">Matara, Southern Province</option>
+                    <option value="Nuwara Eliya, Central Province">Nuwara Eliya, Central Province</option>
+                    <option value="Polonnaruwa, North Central Province">Polonnaruwa, North Central Province</option>
+                    <option value="Ratnapura, Sabaragamuwa Province">Ratnapura, Sabaragamuwa Province</option>
+                    <option value="Tangalle, Southern Province">Tangalle, Southern Province</option>
+                    <option value="Trincomalee, Eastern Province">Trincomalee, Eastern Province</option>
+                    <option value="Vavuniya, Northern Province">Vavuniya, Northern Province</option>
+                    <option value="Anuradhapura, North Central Province">Anuradhapura, North Central Province</option>
+                    <option value="Balangoda, Sabaragamuwa Province">Balangoda, Sabaragamuwa Province</option>
+                    <option value="Bandarawela, Uva Province">Bandarawela, Uva Province</option>
+                    <option value="Battaramulla, Western Province">Battaramulla, Western Province</option>
+                    <option value="Chilaw, North Western Province">Chilaw, North Western Province</option>
+                    <option value="Dehiwala-Mount Lavinia, Western Province">Dehiwala-Mount Lavinia, Western Province
+                    </option>
+                    <option value="Embilipitiya, Sabaragamuwa Province">Embilipitiya, Sabaragamuwa Province</option>
+                    <option value="Galle, Southern Province">Galle, Southern Province</option>
+                    <option value="Gampola, Central Province">Gampola, Central Province</option>
+                    <option value="Gampola, Central Province">Gampola, Central Province</option>
+                    <option value="Hambantota, Southern Province">Hambantota, Southern Province</option>
+                    <option value="Horana, Western Province">Horana, Western Province</option>
+                    <option value="Ja-Ela, Western Province">Ja-Ela, Western Province</option>
+                    <option value="Jaffna, Northern Province">Jaffna, Northern Province</option>
+                    <option value="Kadugannawa, Central Province">Kadugannawa, Central Province</option>
+                    <option value="Kalpitiya, North Western Province">Kalpitiya, North Western Province</option>
+                    <option value="Katunayake, Western Province">Katunayake, Western Province</option>
+                    <option value="Kegalle, Sabaragamuwa Province">Kegalle, Sabaragamuwa Province</option>
+                    <option value="Kelaniya, Western Province">Kelaniya, Western Province</option>
+                    <option value="Kiribathgoda, Western Province">Kiribathgoda, Western Province</option>
+                    <option value="Kochchikade, North Western Province">Kochchikade, North Western Province</option>
+                    <option value="Kuliyapitiya, North Western Province">Kuliyapitiya, North Western Province</option>
+                    <option value="Maharagama, Western Province">Maharagama, Western Province</option>
+                    <option value="Malabe, Western Province">Malabe, Western Province</option>
+                    <option value="Matale, Central Province">Matale, Central Province</option>
+                    <option value="Matara, Southern Province">Matara, Southern Province</option>
+                    <option value="Minuwangoda, Western Province">Minuwangoda, Western Province</option>
+                    <option value="Moratuwa, Western Province">Moratuwa, Western Province</option>
+                    <option value="Mount Lavinia, Western Province">Mount Lavinia, Western Province</option>
+                    <option value="Nawalapitiya, Central Province">Nawalapitiya, Central Province</option>
+                    <option value="Negombo, Western Province">Negombo, Western Province</option>
+                    <option value="Nuwara Eliya, Central Province">Nuwara Eliya, Central Province</option>
+                    <option value="Panadura, Western Province">Panadura, Western Province</option>
+                    <option value="Pannala, North Western Province">Pannala, North Western Province</option>
+                    <option value="Peliyagoda, Western Province">Peliyagoda, Western Province</option>
+                    <option value="Polonnaruwa, North Central Province">Polonnaruwa, North Central Province</option>
+                    <option value="Puttalam, North Western Province">Puttalam, North Western Province</option>
+                    <option value="Ragama, Western Province">Ragama, Western Province</option>
+                    <option value="Ratnapura, Sabaragamuwa Province">Ratnapura, Sabaragamuwa Province</option>
+                    <option value="Sri Jayewardenepura Kotte, Western Province">Sri Jayewardenepura Kotte, Western
+                        Province</option>
+                    <option value="Tangalle, Southern Province">Tangalle, Southern Province</option>
+                    <option value="Teldeniya, Central Province">Teldeniya, Central Province</option>
+                    <option value="Trincomalee, Eastern Province">Trincomalee, Eastern Province</option>
+                    <option value="Vavuniya, Northern Province">Vavuniya, Northern Province</option>
+                    <option value="Wattala, Western Province">Wattala, Western Province</option>
+                    <option value="Weligama, Southern Province">Weligama, Southern Province</option>
+                    <option value="Wennappuwa, North Western Province">Wennappuwa, North Western Province</option>
+                    <option value="Wattegama, Central Province">Wattegama, Central Province</option>
+                    <option value="Wattala, Western Province">Wattala, Western Province</option>
+                    <option value="Weligama, Southern Province">Weligama, Southern Province</option>
+                    <option value="Wattegama, Central Province">Wattegama, Central Province</option>
+                    <option value="Wattala, Western Province">Wattala, Western Province</option>
+                </select>
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="margin-bottom:40px; margin-top:40px;">
+                <label asp-for="ImageFile" class="control-label"></label>
+                <input asp-for="ImageFile" class="form-control" type="file" id="formFile" accept="image/*" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-outline-warning" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div style="margin-top:50px; margin-bottom:100px;">
+    <a asp-action="Index" class="text-warning">Cancel</a>
+</div>

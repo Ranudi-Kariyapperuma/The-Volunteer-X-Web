@@ -1,0 +1,135 @@
+﻿@model PlayasLimpiasWebApp.Models.Event
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+</style>
+<h1 class="display-1" style="color: black;">Event Details</h1>
+
+@if(ViewBag.Role == "Admin")
+{
+    <h1 style="color: rgb(0, 0, 0);">@ViewBag.Role View</h1>
+}
+
+<div style="background-color: seashell; padding: 20px; border-radius: 8px;">
+    <hr />
+
+    <img src="~/images/@Model.Image" class="rounded" style="max-width:35%; margin-bottom:20px;" alt="...">
+
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NumVolunteersReq)
+        </dt>
+        <dd class = "col-sm-10">
+            <h2>@Model.NumVolunteers/@Html.DisplayFor(model => model.NumVolunteersReq)</h2>
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+    </dl>
+</div>
+<div style="margin-top:50px; margin-bottom:100px;">
+
+    @if(ViewBag.Message == "Success")
+    {
+        <div class="alert alert-warning" role="alert">
+            <p style="transform: rotate(0);">
+                Thanks for Volunteerig! You are awesome! <a asp-action="MyEvents" asp-controller="Event" class="text-secondary stretched-link" >See your events here!</a>
+            </p>
+            <div class="atcb" style="display:none;">
+                {
+                    "name":"@Model.Name Event",
+                    "description":"@Model.Description",
+                    "startDate":"@Model.Date.ToString("yyyy-MM-dd")",
+                    "endDate":"@Model.Date.AddDays(1).ToString("yyyy-MM-dd")",
+                    "location":"@Model.Location",
+                    "label":"Set a Reminder",
+                    "options":[
+                        "Google",
+                        "Outlook.com",
+                        "Yahoo"
+                    ]
+                }
+            </div>
+        </div>
+
+    }
+    else if(ViewBag.Message == "Exists")
+    {
+        
+        <div class="alert alert-info" role="alert">
+            <p style="transform: rotate(0);">
+                You are a volunteer for this event, <a asp-action="MyEvents" asp-controller="Event" class="text-secondary stretched-link" >See your events here!</a>
+            </p>
+            <div class="atcb" style="display:none;">
+                {
+                    "name":"@Model.Name Event",
+                    "description":"@Model.Description",
+                    "startDate":"@Model.Date.ToString("yyyy-MM-dd")",
+                    "endDate":"@Model.Date.AddDays(1).ToString("yyyy-MM-dd")",
+                    "location":"@Model.Location",
+                    "label":"Set a Reminder",
+                    "options":[
+                        "Google",
+                        "Outlook.com",
+                        "Yahoo"
+                    ]
+                }
+            </div>
+        </div>
+    }
+    else if(ViewBag.Message == "User not logged in")
+    {
+        <a asp-action="Login" asp-controller="Account" class="btn btn-warning">Login to volunteer</a>
+    }
+    else
+    {
+        <a asp-action="Volunteer" asp-controller="Event" asp-route-id="@Model.Id" class="btn btn-warning">Volunteer for this event</a>
+    }
+
+    @if(ViewBag.Role == "Admin")
+            {
+                <a asp-action="Edit" asp-controller="Event" asp-route-id="@Model.Id" class="btn btn-outline-warning" >Edit</a>
+            }
+
+    
+    <br />
+    
+    <br />
+    <a asp-action="Index" style="margin:20px;" class="text-warning">Back to All Events</a>
+    <a asp-action="MyEvents" class="text-warning">Back to My Events</a>
+</div>
